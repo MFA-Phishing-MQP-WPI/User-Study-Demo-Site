@@ -1,48 +1,30 @@
-const path = require("path");
+const express = require("express"),
+      app = express();
 
-const fastify = require("fastify")({
-  logger: false,
+app.use(express.static("public"));
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.sendFile("index.html", { root: "src/pages" });
 });
 
-fastify.register(require("@fastify/static"), {
-  root: path.join(__dirname, "public"),
-  prefix: "/",
+app.get("/training.html", (req, res) => {
+  res.sendFile("training.html", { root: "src/pages" });
 });
 
-fastify.register(require("@fastify/formbody"));
-
-fastify.register(require("@fastify/view"), {
-  engine: {
-    handlebars: require("handlebars"),
-  },
+app.get("/signup0.html", (req, res) => {
+  res.sendFile("signup0.html", { root: "src/pages" });
+});
+app.get("/signup1.html", (req, res) => {
+  res.sendFile("signup1.html", { root: "src/pages" });
 });
 
-fastify.get("/", function (request, reply) {
-  return reply.view("/src/pages/training.hbs");
-});
-
-fastify.get("/training.hbs", function (request, reply) {
-  return reply.view("/src/pages/training.hbs");
-});
-
-fastify.get("/signup0.hbs", function (request, reply) {
-  return reply.view("/src/pages/signup0.hbs");
-});
-
-fastify.get("/signup1.hbs", function (request, reply) {
-  return reply.view("/src/pages/signup1.hbs");
-});
-
-fastify.get("/signup2.hbs", function (request, reply) {
-  return reply.view("/src/pages/signup2.hbs");
-});
-
-fastify.get("/wifi.hbs", function (request, reply) {
-  return reply.view("/src/pages/wifi.hbs");
+app.get("/signup2.html", (req, res) => {
+  res.sendFile("signup2.html", { root: "src/pages" });
 });
 
 
-fastify.listen(
+app.listen(
   { port: process.env.PORT, host: "0.0.0.0" },
   function (err, address) {
     if (err) {
