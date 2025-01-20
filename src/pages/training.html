@@ -90,20 +90,35 @@
       <h1>Sign Up</h1>
 
       <label for="usrname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="usrname" required />
+      <input type="text" id="username" placeholder="Enter Username" name="usrname" required />
       <p></p>
       <label for="psw"><b>Password</b></label>
       <input type="password" id="psw" placeholder="Enter Password" name="psw" pattern="*.{8,}" required />
       <p>Password must be 8 characters or longer.</p>
       <div id="message">
         <style>
+            #message {
+            display: block;
+            background: #f1f1f1;
+            color: #000;
+            position: relative;
+            text-align: left;
+            padding: 5px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+          }
+
+          #message p {
+            padding: 5px 35px;
+            font-size: 14px;
+          }
           .valid {
             color: green;
           }
 
           .valid:before {
             position: relative;
-            left: -35px;
+            left: -20px;
             content: "\2713";
           }
 
@@ -113,13 +128,13 @@
 
           .invalid:before {
             position: relative;
-            left: -35px;
+            left: -20px;
             content: "\274C";
           }
         </style>
         <p id="length" class="invalid">Minimum <b>8 characters</b></p>
       </div>
-      <button type="submit" class="btn">Submit</button>
+      <button type="submit" id="submit" class="btn" disabled>Submit</button>
       <button type="button" class="btn cancel" onclick="closeForm()">
         Close
       </button>
@@ -143,8 +158,7 @@
       </div>
 
       <div class="w3-third w3-center">
-        <img src="download.png" alt="Graphic of an arrow pointing downwards from a cloud" width="200"
-          height="200">
+        <img src="download.png" alt="Graphic of an arrow pointing downwards from a cloud" width="200" height="200">
       </div>
     </div>
   </div>
@@ -195,17 +209,33 @@
       document.getElementById("signup").style.display = "none";
     }
 
-    var myInput = document.getElementById("psw");
+    var psw = document.getElementById("psw");
+    var usr = document.getElementById("username");
     var length = document.getElementById("length");
-    myInput.onkeyup = function() {
-    if (myInput.value.length >= 8) {
-      length.classList.remove("invalid");
-      length.classList.add("valid");
-    } else {
-      length.classList.remove("valid");
-      length.classList.add("invalid");
+
+    function validate() {
+
+      psw.onkeyup = function () {
+        if (psw.value.length >= 8) {
+          length.classList.remove("invalid");
+          length.classList.add("valid");
+        } else {
+          length.classList.remove("valid");
+          length.classList.add("invalid");
+        }
+      }
+
+      if (psw.value.length >= 8 &&
+        usr.value.length >= 1) {
+        submit.disabled = false;
+      } else {
+        submit.disabled = true;
+      }
     }
-  }
+    psw.addEventListener("keyup", validate);
+    usr.addEventListener("keyup", validate);
+
+    validate();
   </script>
 </body>
 
