@@ -18,6 +18,9 @@ app.get("/signup0.html", (req, res) => {
 app.get("/signup1.html", (req, res) => {
   res.sendFile("signup1.html", { root: "src/pages" });
 });
+app.get("/signup2.html", (req, res) => {
+  res.sendFile("signup2.html", { root: "src/pages" });
+});
 
 
 const port = 8080;
