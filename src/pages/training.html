@@ -1,210 +1,212 @@
 <!DOCTYPE html>
 <!-- W3.CSS template from w3schools.com -->
 <html lang="en">
-  <head>
-    <title>PeliStream</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Lato"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Montserrat"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <style>
-      body,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: "Lato", sans-serif;
-      }
-      .w3-bar,
-      h1,
-      button {
-        font-family: "Montserrat", sans-serif;
-      }
-      .fa-anchor,
-      .fa-coffee {
-        font-size: 200px;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Navbar -->
-    <div class="w3-top">
-      <div class="w3-bar w3-red w3-card w3-left-align w3-large">
-        <a
-          class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red"
-          href="javascript:void(0);"
-          onclick="myFunction()"
-          title="Toggle Navigation Menu"
-          ><i class="fa fa-bars"></i
-        ></a>
-        <a href="/training.html" class="w3-bar-item w3-button w3-padding-large w3-white"
-          >Home</a
-        >
-        <button
-          class="open-button w3-bar-item w3-button w3-padding-large w3-hover-white"
-          onclick="openForm()"
-        >
-          Sign Up
-        </button>
-      </div>
 
-      <!-- Navbar on small screens -->
-      <div
-        id="navDemo"
-        class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large"
-      >
-        <button
-          class="open-button w3-bar-item w3-button w3-padding-large"
-          onclick="openForm()"
-        >
-          Sign Up
-        </button>
-      </div>
-    </div>
+<head>
+  <title>PeliStream</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Lato", sans-serif;
+    }
 
-    <!-- Header -->
-    <header class="w3-container w3-red w3-center" style="padding: 128px 16px">
-      <h1 class="w3-margin w3-jumbo">PeliStream</h1>
-      <p class="w3-large">
-        Watch all your favorite movies, shows, and more on PeliStream. Create an
-        account for a 30 day free trial. No payment info required and no strings
-        attached!
-      </p>
-      <button
-        class="w3-button w3-black w3-padding-large w3-large w3-margin-top"
-        onclick="openForm()"
-      >
+    .w3-bar,
+    h1,
+    button {
+      font-family: "Montserrat", sans-serif;
+    }
+
+    .fa-anchor,
+    .fa-coffee {
+      font-size: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div class="w3-top">
+    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red"
+        href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="/training.html" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+      <button class="open-button w3-bar-item w3-button w3-padding-large w3-hover-white" onclick="openForm()">
         Sign Up
       </button>
-    </header>
-
-    <div class="form-popup" id="signup">
-      <style>
-        .form-popup {
-          display: none;
-          position: fixed;
-          margin: 0 auto;
-          top: 55%;
-          left: 50%;
-          text-align: center;
-          transform: translate(-50%, -50%);
-          border: 3px solid #f3f3f3;
-        }
-
-        .form-container {
-          max-width: 300px;
-          padding: 10px;
-          background-color: white;
-        }
-      </style>
-      <form class="form-container">
-        <h1>Sign Up</h1>
-
-        <label for="usrname"><b>Username</b></label>
-        <input
-          type="text"
-          placeholder="Enter Username"
-          name="usrname"
-          required
-        />
-        <p></p>
-        <label for="psw"><b>Password</b></label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="psw"
-          required
-        />
-        <p>Password must be 8 characters or longer.</p>
-        <button type="submit" class="btn">Submit</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">
-          Close
-        </button>
-        <p></p>
-      </form>
     </div>
 
-    <!-- First Grid -->
-    <div class="w3-row-padding w3-padding-64 w3-container">
-      <div class="w3-content">
-        <div class="w3-twothird">
-          <h1>Watch Anytime, Anywhere</h1>
-          <h5>
-            Download your favorite shows to watch offline, wherever and whenever you want. 
-          </h5>
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+      <button class="open-button w3-bar-item w3-button w3-padding-large" onclick="openForm()">
+        Sign Up
+      </button>
+    </div>
+  </div>
 
-          <p class="w3-text-grey">
-            We believe you deserve access to what you're paying for. Enjoy unlimited downloads 
-            for when you're on the road, camping, or your power goes out. Whatever happens, we're here for you.
-          </p>
-        </div>
+  <!-- Header -->
+  <header class="w3-container w3-red w3-center" style="padding: 128px 16px">
+    <h1 class="w3-margin w3-jumbo">PeliStream</h1>
+    <p class="w3-large">
+      Watch all your favorite movies, shows, and more on PeliStream. Create an
+      account for a 30 day free trial. No payment info required and no strings
+      attached!
+    </p>
+    <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top" onclick="openForm()">
+      Sign Up
+    </button>
+  </header>
 
-        <div class="w3-third w3-center">
-          <img src="/images/download.png" alt="Graphic of an arrow pointing downwards from a cloud" width="200" height="200">
-        </div>
+  <div class="form-popup" id="signup">
+    <style>
+      .form-popup {
+        display: none;
+        position: fixed;
+        margin: 0 auto;
+        top: 55%;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        border: 3px solid #f3f3f3;
+      }
+
+      .form-container {
+        max-width: 300px;
+        padding: 10px;
+        background-color: white;
+      }
+    </style>
+    <form class="form-container">
+      <h1>Sign Up</h1>
+
+      <label for="usrname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="usrname" required />
+      <p></p>
+      <label for="psw"><b>Password</b></label>
+      <input type="password" id="psw" placeholder="Enter Password" name="psw" pattern="*.{8,}" required />
+      <p>Password must be 8 characters or longer.</p>
+      <div id="message">
+        <style>
+          .valid {
+            color: green;
+          }
+
+          .valid:before {
+            position: relative;
+            left: -35px;
+            content: "\2713";
+          }
+
+          .invalid {
+            color: red;
+          }
+
+          .invalid:before {
+            position: relative;
+            left: -35px;
+            content: "\274C";
+          }
+        </style>
+        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+      </div>
+      <button type="submit" class="btn">Submit</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">
+        Close
+      </button>
+      <p></p>
+    </form>
+  </div>
+
+  <!-- First Grid -->
+  <div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+      <div class="w3-twothird">
+        <h1>Watch Anytime, Anywhere</h1>
+        <h5>
+          Download your favorite shows to watch offline, wherever and whenever you want.
+        </h5>
+
+        <p class="w3-text-grey">
+          We believe you deserve access to what you're paying for. Enjoy unlimited downloads
+          for when you're on the road, camping, or your power goes out. Whatever happens, we're here for you.
+        </p>
+      </div>
+
+      <div class="w3-third w3-center">
+        <img src="/images/download.png" alt="Graphic of an arrow pointing downwards from a cloud" width="200"
+          height="200">
       </div>
     </div>
+  </div>
 
-    <!-- Second Grid -->
-    <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
-      <div class="w3-content">
-        <div class="w3-third w3-center">
-          <img src="/images/popcorn.png" alt="Graphic of movie theater popcorn" width="200" height="200">
-        </div>
+  <!-- Second Grid -->
+  <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+    <div class="w3-content">
+      <div class="w3-third w3-center">
+        <img src="/images/popcorn.png" alt="Graphic of movie theater popcorn" width="200" height="200">
+      </div>
 
-        <div class="w3-twothird">
-          <h1>Stream easy</h1>
-          <h5>
-            With thousands of titles to browse, we offer an unparalleled streaming experience.
-          </h5>
-          <p class="w3-text-grey">
-            No junk fees, no ads, no worries. Kick back and enjoy your shows without interruptions.
-          </p>
-        </div>
+      <div class="w3-twothird">
+        <h1>Stream easy</h1>
+        <h5>
+          With thousands of titles to browse, we offer an unparalleled streaming experience.
+        </h5>
+        <p class="w3-text-grey">
+          No junk fees, no ads, no worries. Kick back and enjoy your shows without interruptions.
+        </p>
       </div>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <footer class="w3-container w3-padding-64 w3-center w3-opacity">
-      <p>
-        Powered by
-        <a href="https://www.w3schools.com/w3css/default.asp" target="_blank"
-          >w3.css</a
-        >
-      </p>
-    </footer>
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-64 w3-center w3-opacity">
+    <p>
+      Powered by
+      <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
+    </p>
+  </footer>
 
-    <script>
-      // Used to toggle the menu on small screens when clicking on the menu button
-      function myFunction() {
-        var x = document.getElementById("navDemo");
-        if (x.className.indexOf("w3-show") == -1) {
-          x.className += " w3-show";
-        } else {
-          x.className = x.className.replace(" w3-show", "");
-        }
+  <script>
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function myFunction() {
+      var x = document.getElementById("navDemo");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else {
+        x.className = x.className.replace(" w3-show", "");
       }
+    }
 
-      function openForm() {
-        document.getElementById("signup").style.display = "block";
-      }
+    function openForm() {
+      document.getElementById("signup").style.display = "block";
+    }
 
-      function closeForm() {
-        document.getElementById("signup").style.display = "none";
-      }
-    </script>
-  </body>
+    function closeForm() {
+      document.getElementById("signup").style.display = "none";
+    }
+
+    var myInput = document.getElementById("psw");
+    var length = document.getElementById("length");
+    myInput.onkeyup = function() {
+    if (myInput.value.length >= 8) {
+      length.classList.remove("invalid");
+      length.classList.add("valid");
+    } else {
+      length.classList.remove("valid");
+      length.classList.add("invalid");
+    }
+  }
+  </script>
+</body>
+
 </html>
