@@ -85,66 +85,90 @@
         padding: 10px;
         background-color: white;
       }
+
+      #security-questions {
+        display: none;
+      }
     </style>
     <form class="form-container" action="/login" method="POST">
       <h1>Sign Up</h1>
 
-      <label for="usrname"><b>Username</b></label>
-      <input type="text" id="username" placeholder="Enter Username" name="usrname" required />
-      <p></p>
-      <label for="psw"><b>Password</b></label>
-      <input type="password" id="psw" placeholder="Enter Password" name="psw"
-        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\!\$\%\^\&\*\(\)\_\+\`\-\=\{\}\:\@\~\?\[\]\;\'\#\,\.\/\\\|]).{12,}"
-        required />
-      <div id="message">
-        <style>
-          #message {
-            display: block;
-            background: #f1f1f1;
-            color: #000;
-            position: relative;
-            text-align: left;
-            padding: 5px;
-            margin-top: 5px;
-            margin-bottom: 5px;
-          }
+      <!-- Step 1: Username and Password-->
+      <div id="user-pass">
+        <label for="usrname"><b>Username</b></label>
+        <input type="text" id="username" placeholder="Enter Username" name="usrname" required />
+        <p></p>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" id="psw" placeholder="Enter Password" name="psw"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\!\$\%\^\&\*\(\)\_\+\`\-\=\{\}\:\@\~\?\[\]\;\'\#\,\.\/\\\|]).{12,}"
+          required />
+        <div id="message">
+          <style>
+            #message {
+              display: block;
+              background: #f1f1f1;
+              color: #000;
+              position: relative;
+              text-align: left;
+              padding: 5px;
+              margin-top: 5px;
+              margin-bottom: 5px;
+            }
 
-          #message p {
-            padding: 5px 35px;
-            font-size: 14px;
-          }
+            #message p {
+              padding: 5px 35px;
+              font-size: 14px;
+            }
 
-          .valid {
-            color: green;
-          }
+            .valid {
+              color: green;
+            }
 
-          .valid:before {
-            position: relative;
-            left: -20px;
-            content: "\2713";
-          }
+            .valid:before {
+              position: relative;
+              left: -20px;
+              content: "\2713";
+            }
 
-          .invalid {
-            color: red;
-          }
+            .invalid {
+              color: red;
+            }
 
-          .invalid:before {
-            position: relative;
-            left: -20px;
-            content: "\274C";
-          }
-        </style>
-        <p id="letter" class="invalid"> A <b>lowercase</b> letter</p>
-        <p id="capital" class="invalid">An <b>uppercase</b> letter</p>
-        <p id="number" class="invalid">A <b>number</b></p>
-        <p id="special" class="invalid">A <b>special character</b></p>
-        <p id="length" class="invalid">Minimum <b>12 characters</b></p>
+            .invalid:before {
+              position: relative;
+              left: -20px;
+              content: "\274C";
+            }
+          </style>
+          <p id="letter" class="invalid"> A <b>lowercase</b> letter</p>
+          <p id="capital" class="invalid">An <b>uppercase</b> letter</p>
+          <p id="number" class="invalid">A <b>number</b></p>
+          <p id="special" class="invalid">A <b>special character</b></p>
+          <p id="length" class="invalid">Minimum <b>12 characters</b></p>
+        </div>
+        <button type="button" id="next" class="btn" disabled onclick="nextStep()">Next</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">
+          Close
+        </button>
+        <p></p>
       </div>
-      <button type="submit" id="submit" class="btn" disabled>Submit</button>
-      <button type="button" class="btn cancel" onclick="closeForm()">
-        Close
-      </button>
-      <p></p>
+
+      <!-- Step 2: Security Questions-->
+      <div id="security-questions">
+        <p>Select a security question</p>
+        <select id="question" name="question" required>
+          <option value="mother-maiden-name">What is your mother's maiden name?</option>
+          <option value="first-pet">What was the name of your first pet?</option>
+          <option value="birthplace">What city were you born in?</option>
+          <option value="birthplace">What was the model of your first car?</option>
+        </select>
+        <p></p>
+        <label for="answer"><b>Answer</b></label>
+        <input type="text" id="answer" placeholder="Enter your answer" name="answer" required />
+        <p></p>
+        <button type="submit" id="submit" class="btn">Submit</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </div>
     </form>
   </div>
 
@@ -164,8 +188,7 @@
       </div>
 
       <div class="w3-third w3-center">
-        <img src="download.png" alt="Graphic of an arrow pointing downwards from a cloud" width="200"
-          height="200">
+        <img src="download.png" alt="Graphic of an arrow pointing downwards from a cloud" width="200" height="200">
       </div>
     </div>
   </div>
@@ -223,9 +246,11 @@
     var number = document.getElementById("number");
     var special = document.getElementById("special");
     var length = document.getElementById("length");
+    var next = document.getElementById("next");
+    var answer = document.getElementById("answer");
     var submit = document.getElementById("submit");
 
-    function validate() {
+    function validateCreds() {
 
       var lowerCaseLetters = /[a-z]/g;
       if (psw.value.match(lowerCaseLetters)) {
@@ -278,15 +303,30 @@
         psw.value.match(specials) &&
         psw.value.length >= 12 &&
         usr.value.length >= 1) {
+        next.disabled = false;
+      } else {
+        next.disabled = true;
+      }
+    }
+    psw.addEventListener("keyup", validateCreds);
+    usr.addEventListener("keyup", validateCreds);
+
+    validateCreds();
+
+    function nextStep() {
+      document.getElementById("user-pass").style.display = "none";
+      document.getElementById("security-questions").style.display = "block";
+    }
+
+    function validateQuestion() {
+      if (answer.value.length >= 1) {
         submit.disabled = false;
       } else {
         submit.disabled = true;
       }
     }
-    psw.addEventListener("keyup", validate);
-    usr.addEventListener("keyup", validate);
-
-    validate();
+    answer.addEventListener("keyup", validateQuestion);
+    validateQuestion();
 
   </script>
 </body>
