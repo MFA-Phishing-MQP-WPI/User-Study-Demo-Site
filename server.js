@@ -23,14 +23,12 @@ app.get("/signup2.html", (req, res) => {
   res.sendFile("signup2.html", { root: "src/pages" });
 });
 
-
-app.listen(
-  { port: process.env.PORT, host: "0.0.0.0" },
-  function (err, address) {
+const port = 8080;
+app.listen(port,(err) => {
     if (err) {
       console.error(err);
       process.exit(1);
     }
-    console.log(`Your app is listening on ${address}`);
+    console.log(`Your app is listening on ${port}`);
   }
 );
