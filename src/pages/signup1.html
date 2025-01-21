@@ -86,21 +86,11 @@
         background-color: white;
       }
     </style>
-    <form class="form-container">
+    <form id="signup-form" class="form-container">
       <h1>Sign Up</h1>
 
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email Address" name="email" required />
-
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-      </script>
-      <script type="text/javascript">
-        (function () {
-          emailjs.init({
-            publicKey: "RKPWJFwek8iO6tviy",
-          });
-        })();
-      </script>
 
       <button type="submit" class="btn">Submit</button>
       <button type="button" class="btn cancel" onclick="closeForm()">
@@ -176,6 +166,30 @@
 
     function closeForm() {
       document.getElementById("signup").style.display = "none";
+    }
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init({
+        publicKey: "RKPWJFwek8iO6tviy",
+      });
+    })();
+  </script>
+  <script type="text/javascript">
+    window.onload = function () {
+      document.getElementById('signup-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        
+        emailjs.sendForm('service_fgy57s9', 'template_bnn6uan', this)
+          .then(() => {
+            console.log('SUCCESS!');
+            document.getElementById("signup").style.display = "none";
+          }, (error) => {
+            console.log('FAILED...', error);
+          });
+      });
     }
   </script>
 </body>
