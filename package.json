@@ -7,11 +7,10 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "express": "^4.17.1"
   },
   "engines": {
     "node": "14.x"
   }
 }
-
-  
