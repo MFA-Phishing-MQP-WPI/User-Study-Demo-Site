@@ -3,7 +3,7 @@ const app = express();
 const path = require("path");
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "pages")))
+app.use(express.static(path.join(__dirname, "docs")))
 app.use(express.static(path.join(__dirname,"images")));
 app.use(express.json());
 
