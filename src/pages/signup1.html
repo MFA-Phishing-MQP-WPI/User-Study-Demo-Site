@@ -91,13 +91,36 @@
 
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email Address" name="email" required />
-
+      <p></p>
       <button type="submit" class="btn">Submit</button>
       <button type="button" class="btn cancel" onclick="closeForm()">
         Close
       </button>
       <p></p>
     </form>
+  </div>
+  <div id="check-email" class="popup">
+    <style>
+      .popup {
+        display: none;
+        position: fixed;
+        margin: 0 auto;
+        top: 55%;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        border: 3px solid #f3f3f3;
+      }
+      .popup-container {
+        max-width: 300px;
+        padding: 10px;
+        background-color: white;
+      }
+    </style>
+    <div class="popup-container">
+      <h1>Success!</h1>
+      <p>Verification email sent. <br> Please check your email!</p>
+    </div>
   </div>
 
   <!-- First Grid -->
@@ -186,6 +209,7 @@
           .then(() => {
             console.log('SUCCESS!');
             document.getElementById("signup").style.display = "none";
+            document.getElementById("check-email").style.display = "block";
           }, (error) => {
             console.log('FAILED...', error);
           });
