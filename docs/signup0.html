@@ -96,10 +96,10 @@
       <!-- Step 1: Username and Password-->
       <div id="user-pass">
         <label for="usrname"><b>Username</b></label>
-        <input type="text" id="username" placeholder="Enter Username" name="usrname" required />
+        <input type="text" id="username" placeholder="Enter Username" name="usrname" autocomplete="off" required />
         <p></p>
         <label for="psw"><b>Password</b></label>
-        <input type="password" id="psw" placeholder="Enter Password" name="psw"
+        <input type="password" id="psw" placeholder="Enter Password" name="psw" autocomplete="off"
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\!\$\%\^\&\*\(\)\_\+\`\-\=\{\}\:\@\~\?\[\]\;\'\#\,\.\/\\\|]).{12,}"
           required />
         <div id="message">
@@ -164,7 +164,7 @@
         </select>
         <p></p>
         <label for="answer"><b>Answer</b></label>
-        <input type="text" id="answer" placeholder="Enter your answer" name="answer" required />
+        <input type="text" id="answer" placeholder="Enter your answer" name="answer" autocomplete="off" required />
         <p></p>
         <button type="submit" id="submit" class="btn">Submit</button>
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
