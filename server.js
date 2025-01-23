@@ -27,7 +27,7 @@ app.get("/success.html", (req, res) => {
   res.sendFile("sucess.html");
 });
 app.post("/login", (req, res) => {
-  res.redirect("success.html");
+  res.redirect("https://www.pelistream.fun/success.html");
 });
 
 
