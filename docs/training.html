@@ -86,7 +86,7 @@
         background-color: white;
       }
     </style>
-    <form class="form-container" action="/login" method="POST">
+    <form id="login-form" class="form-container" action="/login" method="POST">
       <h1>Sign Up</h1>
 
       <label for="usrname"><b>Username</b></label>
@@ -236,6 +236,24 @@
     usr.addEventListener("keyup", validate);
 
     validate();
+  </script>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault()
+  
+      fetch('/login', {
+        method: 'POST',
+        body: new FormData(this),
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = '/success.html';
+        } else {
+          alert('Login failed');
+        }
+      })
+      .catch(error => console.error('Error:', error));
+    });
   </script>
 </body>
 
