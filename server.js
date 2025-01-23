@@ -23,9 +23,13 @@ app.get("/signup1.html", (req, res) => {
 app.get("/signup2.html", (req, res) => {
   res.sendFile("signup2.html");
 });
+app.get("/success.html", (req, res) => {
+  res.sendFile("sucess.html");
+});
 app.post("/login", (req, res) => {
   res.redirect("success.html");
 });
+
 
 
 const port = 8080;
