@@ -91,7 +91,7 @@
       </button>
     </header>
 
-    <div class="form-popup" id="signup">
+    <div class="form-popup" id="login-form">
       <style>
         .form-popup {
           display: none;
@@ -190,5 +190,11 @@
         document.getElementById("signup").style.display = "none";
       }
     </script>
+      <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+          e.preventDefault()
+              window.location.href = '/success.html';
+          });
+      </script>
   </body>
 </html>

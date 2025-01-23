@@ -90,7 +90,7 @@
         display: none;
       }
     </style>
-    <form class="form-container" action="/login" method="POST">
+    <form class="form-container" id="login-form">
       <h1>Sign Up</h1>
 
       <!-- Step 1: Username and Password-->
@@ -327,8 +327,14 @@
     }
     answer.addEventListener("keyup", validateQuestion);
     validateQuestion();
-
+    
   </script>
+    <script>
+      document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault()
+            window.location.href = '/success.html';
+        });
+    </script>
 </body>
 
 </html>
