@@ -103,10 +103,11 @@
         <b>Sign in with Microsoft</b>
         <br><br>
         <label for="usrname"><b>Username</b></label>
-        <input type="text" id="username" placeholder="Enter Username" name="usrname" autocomplete="off" required />
+        <input type="text" id="microsoft-username" placeholder="Enter Username" name="usrname" autocomplete="off"
+          required />
         <p></p>
         <label for="psw"><b>Password</b></label>
-        <input type="password" id="psw" placeholder="Enter Password" name="psw" autocomplete="off" required />
+        <input type="password" id="microsoft-psw" placeholder="Enter Password" name="psw" autocomplete="off" required />
       </div>
       <div id="google-sso">
         <br>
@@ -114,10 +115,11 @@
         <b>Sign in with Google</b>
         <br><br>
         <label for="usrname"><b>Username</b></label>
-        <input type="text" id="username" placeholder="Enter Username" name="usrname" autocomplete="off" required />
+        <input type="text" id="google-username" placeholder="Enter Username" name="usrname" autocomplete="off"
+           />
         <p></p>
         <label for="psw"><b>Password</b></label>
-        <input type="password" id="psw" placeholder="Enter Password" name="psw" autocomplete="off" required />
+        <input type="password" id="google-psw" placeholder="Enter Password" name="psw" autocomplete="off"  />
       </div>
       <div id="github-sso">
         <br>
@@ -125,10 +127,11 @@
         <b>Sign in with GitHub</b>
         <br><br>
         <label for="usrname"><b>Username</b></label>
-        <input type="text" id="username" placeholder="Enter Username" name="usrname" autocomplete="off" required />
+        <input type="text" id="github-username" placeholder="Enter Username" name="usrname" autocomplete="off"
+           />
         <p></p>
         <label for="psw"><b>Password</b></label>
-        <input type="password" id="psw" placeholder="Enter Password" name="psw" autocomplete="off" required />
+        <input type="password" id="github-psw" placeholder="Enter Password" name="psw" autocomplete="off"  />
       </div>
       <br>
       <button type="submit" id="submit" class="btn" disabled>Submit</button>
@@ -216,35 +219,71 @@
         document.getElementById("microsoft-sso").style.display = "block";
         document.getElementById("google-sso").style.display = "none";
         document.getElementById("github-sso").style.display = "none";
+        document.getElementById('microsoft-username').setAttribute('required', 'true');
+        document.getElementById('microsoft-psw').setAttribute('required', 'true');
+        document.getElementById('google-username').removeAttribute('required');
+        document.getElementById('google-psw').removeAttribute('required');
+        document.getElementById('github-username').removeAttribute('required');
+        document.getElementById('github-psw').removeAttribute('required');
 
       } else if (choice === "google") {
         document.getElementById("google-sso").style.display = "block";
         document.getElementById("microsoft-sso").style.display = "none";
         document.getElementById("github-sso").style.display = "none";
+        document.getElementById('google-username').setAttribute('required', 'true');
+        document.getElementById('google-psw').setAttribute('required', 'true');
+        document.getElementById('microsoft-username').removeAttribute('required');
+        document.getElementById('microsoft-psw').removeAttribute('required');
+        document.getElementById('github-username').removeAttribute('required');
+        document.getElementById('github-psw').removeAttribute('required');
 
       } else if (choice === "github") {
         document.getElementById("github-sso").style.display = "block";
         document.getElementById("microsoft-sso").style.display = "none";
         document.getElementById("google-sso").style.display = "none";
+        document.getElementById('github-username').setAttribute('required', 'true');
+        document.getElementById('github-psw').setAttribute('required', 'true');
+        document.getElementById('google-username').removeAttribute('required');
+        document.getElementById('google-psw').removeAttribute('required');
+        document.getElementById('microsoft-username').removeAttribute('required');
+        document.getElementById('microsoft-psw').removeAttribute('required');
       }
     });
 
-    var usr = document.getElementById("username");
-    var psw = document.getElementById("psw");
+    var microsoftUsr = document.getElementById("microsoft-username");
+    var microsoftPsw = document.getElementById("microsoft-psw");
+    var googleUsr = document.getElementById("google-username");
+    var googlePsw = document.getElementById("google-psw");
+    var githubUsr = document.getElementById("github-username");
+    var githubPsw = document.getElementById("github-psw");
     var submit = document.getElementById("submit");
 
     function validateInput() {
-      if (usr.value.length >= 1 && psw.value.length >= 1) {
+      if (microsoftUsr.value.length >= 1 && microsoftPsw.value.length >= 1) {
+        submit.disabled = false;
+      } else if (googleUsr.value.length >= 1 && googlePsw.value.length >= 1) {
+        submit.disabled = false;
+      } else if (githubUsr.value.length >= 1 && githubPsw.value.length >= 1) {
         submit.disabled = false;
       } else {
         submit.disabled = true;
       }
     }
-    usr.addEventListener("keyup", validateInput);
-    psw.addEventListener("keyup", validateInput);
+    microsoftUsr.addEventListener("keyup", validateInput);
+    microsoftPsw.addEventListener("keyup", validateInput);
+    googleUsr.addEventListener("keyup", validateInput);
+    googlePsw.addEventListener("keyup", validateInput);
+    githubUsr.addEventListener("keyup", validateInput);
+    githubPsw.addEventListener("keyup", validateInput);
 
     validateInput();
   </script>
+    <script>
+      document.getElementById('sso-choice-form').addEventListener('submit', function(e) {
+        e.preventDefault()
+            window.location.href = '/success.html';
+        });
+    </script>
 </body>
 
 </html>
